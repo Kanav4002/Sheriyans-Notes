@@ -1,0 +1,10 @@
+.highlight {
+  color: red;
+  background-color: orange;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 50px;
+}
+
+.placeholder {
+  width: 500px;
+}

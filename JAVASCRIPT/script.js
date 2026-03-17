@@ -2038,5 +2038,21 @@
 
 /*
   Event object: target, type, preventDefault
+  // event object here is (event) inside the function
+  // target here is the div which is being targeted
+  // type here is click event
+
+  document.querySelector('#abcd').addEventListener('click', (event) => {
+    console.log(event);
+  });
+
+  let form = document.querySelector('form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+  });
+*/
+
+/*
+  Event bubbling and capturing
   
 */

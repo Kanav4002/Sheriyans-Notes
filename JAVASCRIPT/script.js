@@ -28,7 +28,7 @@
 */ 
 
 /*
-  Scope (global, block, functional)
+  Scope (global, block, functional).  
   // global scope
   var a = 12; // not inside a curly braces
 
@@ -1884,5 +1884,159 @@
 
 // Events and Event Handling
 /*
+  Event binding: addEventListener, removeEventListener
+  1. event matlab hota h koi action hua
+  2. event listener ka matlab h aapne koi action ka reaction diya
+  
+  let p = document.querySelector('p');
+  p.addEventListener('dblclick', function() {
+    this.classList.add('para');
+  });
+
+  p.addEventListener('click', () => {
+    this.classList.toggle('para');
+  });
+
+  function dblclick() {
+    p.classList.add('para');
+  }
+
+  p.addEventListener('dblclick', dblclick);
+  p.removeEventListener('dblclick', dblclick);
+*/  
+
+/*
+  Common events: click, input, change, submit, mouseover, keyup
+
+  1. click
+  let p = document.querySelector('p');
+  p.addEventListener('click', () => {
+    p.classList.add('para');
+  });
+
+  2. input
+  let input = document.querySelector('input');
+  input.addEventListener('input', () => {
+    console.log("Typed");
+  });
+
+  let input = document.querySelector('input');
+  input.addEventListener('input', (e) => {
+    // console.log("Typed");
+    // console.log(e);
+    // console.log(e.data);
+    if (e.data !== null) {
+      console.log(e.data);
+    }
+  });
+
+  3. change: event tab chlta h jab apka koi input select ya textarea m koi change hojaye
+  
+  let select = document.querySelector('select');
+  let device = document.querySelector('#device');
+  select.addEventListener('change', function(e) {
+    // console.log(e.target.value);
+    device.textContent = `Device Selected: ${e.target.value}`;
+  });
+
+  // Changing the content of the heading with event listener
+  |
+  let h1 = document.querySelector('h1');
+  window.addEventListener('keydown', function(val) {
+    // console.log(val.key);
+    if (val.key === " ") {
+      h1.textContent = "Space";
+    } else {
+      h1.textContent = val.key;
+    }
+  });
+
+
+  4. submit
+  // changing the style of the file input button and updating the textContent of the button with that current file_name.
+  let btn = document.querySelector('#btn');
+  let file_input = document.querySelector('#file-input');
+  btn.addEventListener('click', () => {
+    file_input.click();
+  });
+
+  file_input.addEventListener('change', (event) => {
+    // console.log(event.target.files[0].name);
+    const file = event.target.files[0];
+    if (file) {
+      btn.textContent = file.name;
+    }
+  });
+
+
+  // creating a card from submit event on button
+  let form = document.querySelector('form');
+  let main = document.querySelector('#main');
+  let inputs = document.querySelectorAll('input'); // nodelist
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    let card = document.createElement('div');
+    card.classList.add('card');
+
+    let profile = document.createElement('div');
+    profile.classList.add('profile');
+
+    let img = document.createElement('img');
+    img.setAttribute('src', inputs[0].value);
+
+    let h3 = document.createElement('h3');
+    h3.textContent = inputs[1].value;
+
+    let h5 = document.createElement('h5');
+    h5.textContent = inputs[2].value;
+
+    let p = document.createElement('p');
+    p.textContent = inputs[3].value;
+
+    profile.appendChild(img);
+    card.appendChild(profile);
+    card.appendChild(h3);
+    card.appendChild(h5);
+    card.appendChild(p);
+    main.appendChild(card);
+
+    inputs.forEach(function(inp) {
+      if (inp.type !== "submit") {
+        inp.value = "";
+      }
+    });
+  });
+  
+
+  5. mouseover, mouseout, mousemove
+  let abcd = document.querySelector('#abcd');
+  abcd.addEventListener('mouseover', function() {
+    abcd.style.backgroundColor = "yellow";
+  });
+
+  abcd.addEventListener('mouseout', function() {
+    abcd.style.backgroundColor = "red";
+  });
+  
+  window.addEventListener('mousemove', function(event) {
+    // console.log(event.clientX, event.clientY);
+    abcd.style.top = event.clientY + "px";
+    abcd.style.left = event.clientX + "px";
+  });
+
+  6. keyup
+  let p = document.querySelector('#log');
+  document.querySelector('input').addEventListener('keyup', function(event) {
+    event.preventDefault();
+    // console.log(event.key);
+    p.textContent += event.key;
+  }) 
+
+*/  
+
+/*
+  Event object: target, type, preventDefault
   
 */

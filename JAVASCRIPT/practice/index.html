@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hovered {
+      background-color: black;
+      color: white;
+      border: 2px solid black;
+    }
+
+    .active {
+      background-color: yellow;
+      color: red;
+    }
+
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid black;
+      height: 150px;
+      width: 150px;
+      background-color: white;
+    }
+
+    #btn {
+      background-color: red;
+      padding: 12px 22px;
+      color: white;
+      border-radius: 5px;
+      border: none;
+    }
+
+    #btn:hover {
+      background-color: rgb(184, 0, 0);
+      cursor: pointer;
+    }
+
+    #btn:active {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- <input type="text"> -->
+  <!-- <p>Hello, World!</p> -->
+  <!-- <button>Click me!</button> -->
+
+  <!-- <div>
+    click me
+  </div> -->
+  
+  <!-- <input type="text"> -->
+  <!-- <p class="charCount"></p> -->
+  <!-- <form id="myForm">
+    <label>Name:</label>
+    <input type="text" placeholder="Enter your name">
+
+  <br><br>
+
+  <button type="submit">Submit</button>
+  </form>
+
+  <p id="message"></p> -->
+
+  <!-- <button id="btn" type="submit">Submit</button> -->
+  <button id="btn" type="submit">Submit</button>
+
+  <script>
+    // let p = document.querySelector('p');
+    // let btn = document.querySelector('button');
+
+    // function click() {
+    //   p.textContent = "Button Clicked!";
+    // }
+    // function dblclick() {
+    //   p.style.backgroundColor = 'yellow';
+    // }
+    // 1. When a button is clicked, change the text of a paragraph to "Button Clicked!".
+    // btn.addEventListener('click', click);
+    // 2. Double click on a paragraph and change its background color to yellow.
+    // p.addEventListener('dblclick', dblclick);
+
+    /*  
+       3. When the mouse goes over a div, add class hovered. When the mouse leaves, remove the class.
+    */
+    // let div = document.querySelector('div');
+    // let mouseover = () => {
+    //   div.classList.add('hovered');
+    // }
+    // let mouseout = () => {
+    //   div.classList.remove('hovered');
+    // }
+    // div.addEventListener('mouseover', mouseover);
+    // div.addEventListener('mouseout', mouseout);
+
+    /*
+      4️⃣ Toggle Class on Click
+      When clicking a div:
+      first click → add class active
+      second click → remove class active
+      Hint: you already used it 👀
+      
+      let div = document.querySelector('div');
+      div.addEventListener('click', () => {
+        div.classList.toggle('active');
+      });
+    */
+      
+
+    /*
+      5️⃣ Live Character Counter
+      When typing inside an input box, show the number of characters typed inside a <p>.
+      
+      let input = document.querySelector('input');
+      let p = document.querySelector('.charCount');
+      let count = 0;
+      input.addEventListener('input', (e) => {
+        p.textContent = input.value.length;
+        console.log(input.value);
+        
+      });
+    */
+    
+    /*
+      6. Whenever the user types a key in an input box, log the key pressed.
+      
+      let input = document.querySelector('input');
+      input.addEventListener('keydown', (e) => {
+        console.log(e.key);
+      });
+    */
+
+    /*
+      7. 7️⃣ Convert Text to Uppercase
+        Whatever the user types in the input should automatically convert to uppercase.
+
+        document.querySelector('input').addEventListener('keydown', (e) => {
+          // console.log(e);
+          e.target.value = e.target.value.toUpperCase();
+        });
+    */
+    
+    /*
+      8️⃣ Prevent Form Refresh
+
+      Create a form and when it submits:
+        •	stop page refresh
+        •	print "Form submitted"
+
+      let message = document.querySelector("#message");
+      document.querySelector('#myForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log("Form submitted");
+        message.textContent = "Form submitted";
+      });
+    */
+    
+    /*
+      9️⃣ Show Input Value on Submit
+      User enters name → clicks submit → show it in console.
+      let input = document.querySelector('input');
+      document.querySelector('#myForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log(input.value);
+      });
+    */
+
+    /*
+      🔟 Remove Event After First Click
+      Button should work only once.
+
+      let click = () => {
+        console.log('Hello World!');
+        btn.removeEventListener('click', click);
+      }
+      let btn = document.querySelector('#btn');
+      btn.addEventListener('click', click);
+    */
+
+    /*
+      11️⃣ Secret Box
+
+      Create a box.
+
+      When clicked:
+        •	background becomes green
+
+      When double clicked:
+        •	background becomes red
+
+      <div class="box"></div>
+      let box = document.querySelector('div');
+      let click = () => { box.style.backgroundColor = 'green' };
+      let dblclick = () => { box.style.backgroundColor = 'red' };
+      box.addEventListener('click', click);
+      box.addEventListener('dblclick', dblclick);
+    */
+
+    /*
+      12️⃣ Input Warning
+      If user types more than 10 characters, show:
+      Too many characters!
+
+      let input = document.querySelector('input');
+      let count = 0;
+      input.addEventListener('keydown', (e) => { 
+        if (e.target.value.length > 10) {
+          console.log("Too many characters!");
+        }
+      });
+    */
+
+    /*
+      13️⃣ Color Changer
+      Click a button → page background changes to random color.
+
+      let btn = document.querySelector('#btn');
+      btn.addEventListener('click', function() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`; 
+      });
+    */  
+
+    /*
+      14️⃣ Disable Button After Click
+      Goal
+      When the user clicks the buton:
+        1.	The button should become disabled
+        2.	The button text should change to “Submitted”
+     
+      let btn = document.querySelector('#btn');
+      btn.addEventListener('click', function() {
+        btn.textContent = "Submitted";
+        btn.disabled = true;
+      });
+    */
+    
+</script>
+</body>
+</html>
+

@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+body {
+    overflow: hidden;
+    background: #0a0a0f;
+    font-family: 'Orbitron', sans-serif;
+    cursor: crosshair;
+}
+
+canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+}
+
+#hud {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#health-bar {
+    width: 220px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(0, 255, 170, 0.4);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+#health-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #00ffaa, #00ff66);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
+}
+
+#health-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+#score-display,
+#wave-display {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 255, 170, 0.6);
+    letter-spacing: 2px;
+}
+
+#score-display span,
+#wave-display span {
+    color: #00ffaa;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 5, 15, 0.92);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay h1 {
+    font-size: 72px;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: 6px;
+    text-shadow: 0 0 40px rgba(0, 255, 170, 0.4);
+}
+
+.overlay h1 span {
+    color: #00ffaa;
+    text-shadow: 0 0 60px rgba(0, 255, 170, 0.8);
+}
+
+.overlay p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    margin-top: 20px;
+    letter-spacing: 3px;
+}
+
+.overlay button {
+    margin-top: 40px;
+    padding: 16px 50px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #0a0a0f;
+    background: #00ffaa;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 30px rgba(0, 255, 170, 0.4);
+}
+
+.overlay button:hover {
+    background: #fff;
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+#final-score,
+#final-wave {
+    font-size: 18px;
+    color: #00ffaa;
+    letter-spacing: 4px;
+}
+
+#final-wave {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.hint {
+    font-size: 11px !important;
+    color: rgba(255, 255, 255, 0.25) !important;
+    margin-top: 12px !important;
+}

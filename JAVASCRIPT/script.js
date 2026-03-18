@@ -2120,3 +2120,74 @@
   });
 */
 
+// Forms and Form Validation
+/*
+  - inline validation is not secure so js validation is important.
+  let name = document.querySelector('#name');
+  let form = document.querySelector('form');
+
+  // JS Validation
+  // form.addEventListener('submit', function(event) {
+  //   event.preventDefault();
+  //   if (name.value.length <= 2) {
+  //     document.querySelector('#hide').style.display = 'initial';
+  //   } else {
+  //     document.querySelector('#hide').style.display = 'none';
+  //   }
+  // });
+
+  // Regex
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    // regex for email
+    // const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // regex for username
+    const regex = /^[a-zA-Z0-9_]{3,16}$/;
+    let ans = regex.test("ka");
+    // let ans = regex.test("a@a.a");
+    console.log(ans);
+  });
+*/
+
+/*
+  Practice
+  1. Email/Password Validator
+  let email = document.querySelector('#email');
+  let password = document.querySelector('#password');
+  let form = document.querySelector('form');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    document.querySelector('#emailError').textContent = '';
+    document.querySelector('#passwordError').textContent = '';
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    let isValid = true;
+
+    let emailAns = emailRegex.test(email.value);
+    let passwordAns = passwordRegex.test(password.value);
+    
+    if (!emailAns) {
+      document.querySelector('#emailError').textContent = 'Email is incorrect';
+      isValid = false;
+    }
+    if (!passwordAns) {
+      document.querySelector('#passwordError').textContent = 'Password is incorrect';
+      isValid = false;
+    }  
+
+    if (isValid) {
+      document.querySelector('#resultMessage').textContent = "Everything is correct";
+      document.querySelector('#resultMessage').style.color = "green";
+    }
+  });
+*/
+
+/*
+  Confusions:
+  .value we use for inputs 
+  .textContent for text html elements
+*/

@@ -25,7 +25,7 @@
   const discount = 10;
   const groom = "Kanav";
   const bride = "Jamecel";
-*/ 
+*/
 
 /*
   Scope (global, block, functional).  
@@ -155,7 +155,7 @@
   // let b = a;
   // b.pop();
 */
-   
+
 /*
   Primitive DataType
   Strings
@@ -198,7 +198,7 @@
   let b = a;
   b.name = "kannan"
 
-*/ 
+*/
 
 /*
   Dynamic Typing : 
@@ -241,7 +241,7 @@
   - null is something we put to assign later on.
 */
 
-// Operators 
+// Operators
 /*
   Arithmetic, Comparison, Assignment, Logical, Unary, Ternay
 
@@ -481,7 +481,7 @@
   O/P : Two Three (bug if break is missing)
 */
 
-// Loops        
+// Loops
 /*
   for while do-while for-in for-of for-eaech
   
@@ -1247,7 +1247,7 @@
   let ans = arr.every(function(val) {
     return val > 9
   });
-*/  
+*/
 
 /*
   // Destructoring
@@ -1622,7 +1622,7 @@
     [key]: "admin",
     [key2]: 21,
   }
-*/  
+*/
 
 /*
   Deep Copy v/s Shallow Copy
@@ -1903,7 +1903,7 @@
 
   p.addEventListener('dblclick', dblclick);
   p.removeEventListener('dblclick', dblclick);
-*/  
+*/
 
 /*
   Common events: click, input, change, submit, mouseover, keyup
@@ -2034,7 +2034,7 @@
     p.textContent += event.key;
   }) 
 
-*/  
+*/
 
 /*
   Event object: target, type, preventDefault
@@ -2054,5 +2054,69 @@
 
 /*
   Event bubbling and capturing
+
+  Event bubbling:
+  Jis element par event aata hai, agar us par event listener nahi laga hota, to event uske parent par listener dhundhta hai. Phir agar wahan bhi nahi milta, to ye process continue hota hai aur event upar ki taraf move karta rehta hai (parent → grandparent → document tak).
+
+    document.querySelector('#nav').addEventListener('click', function() {
+    alert('clicked');
+  });
+
+    document.querySelector('ul').addEventListener('click', function(event) {
+    // event.target.style.textDecoration = "line-through";
+    event.target.classList.toggle('lt');
+  });
   
+
+  Event capturing:
+  Jab bhi aap click karte ho ya koi bhi event raise hota hai, to event ka flow 2 phases mein hota hai:
+
+  Phase 1 (Capturing Phase):
+  Event sabse upar wale element (document) se start hota hai aur neeche ki taraf travel karta hai, jab tak target element tak nahi pahunch jaata.
+
+  Phase 2 (Bubbling Phase):
+  Phir event target element se wapas upar ki taraf (parent → grandparent → document) move karta hai.
+
+  let a = document.querySelector(".a");
+  let b = document.querySelector(".b");
+  let c = document.querySelector(".c");
+  let btn = document.querySelector("button");
+
+  btn.addEventListener("click", () => {
+    console.log("Button clicked");
+  });
+
+  c.addEventListener("click", () => {
+    console.log("c clicked");
+  }, true);
+
+  b.addEventListener("click", () => {
+    console.log("b clicked");
+  });
+
+  a.addEventListener(
+    "click",
+    () => {
+      console.log("a clicked");
+    },
+    true,
+  );
 */
+
+/*
+  Practice:
+  1. Live Character Counter
+
+  let input = document.querySelector("input");
+  let span = document.querySelector('span');
+  input.addEventListener("input", function (eent) {
+    let remaining = 20 - input.value.length;
+    span.textContent = remaining;
+    if (remaining < 0) {
+      span.style.color = 'red';
+    } else {
+      span.style.color = 'white';
+    }
+  });
+*/
+

@@ -2191,3 +2191,92 @@
   .value we use for inputs 
   .textContent for text html elements
 */
+
+// Time & Intervals
+/*
+  1. setTimeout, clearTimeout
+  2. setInterval, clearInterval
+
+  console.log("Hello");
+  setTimeout(function() {
+    console.log("World");
+  }, 2000); // 1000 ms = 1 sec
+
+  setInterval(function() {
+    console.log("Kanav");
+  }, 100);
+
+  let timeOut = setTimeout(function() {
+    console.log("Hey");
+  }, 2000);
+  clearTimeout(timeOut);
+
+  let timeIn = setInterval(function() {
+    console.log("Hey");
+  }, 2000);
+  clearInterval(timeIn);
+
+  // Countdown
+  let count = 10;
+  let interval = setInterval(function() {
+    if (count >= 0) {
+      console.log(count);     
+      count--;
+    }
+    else clearInterval(interval);
+  }, 1000);
+*/
+
+/*
+  Download progress
+  Overall progress = 3 secs : 100% (3000 ms)
+
+  let count = 0;
+  let seconds = 3;
+  let progress = document.querySelector('.progress-bar');
+  let percent = document.querySelector('.percent');
+  let interval = setInterval(function() {
+    if (count <= 99) {
+      count++;
+      progress.style.width = `${count}%`
+      percent.textContent = `${count}%`
+    } else {
+      document.querySelector('h2').textContent = 'Downloaded.';
+      clearInterval(interval);
+    }
+  }, (`${seconds}`* 1000) / 100);
+
+
+  Auto-hide alert banner after 3s
+  let count = 0;
+  let seconds = 3;
+  let progress = document.querySelector('.progress-bar');
+  let percent = document.querySelector('.percent');
+  let btn = document.querySelector('#downloadBtn');
+  let alert = document.querySelector('#alertBox');
+  btn.addEventListener('click', function(event) {
+    event.preventDefault();
+    let interval = setInterval(function() {
+    if (count <= 99) {
+      count++;
+      progress.style.width = `${count}%`
+      percent.textContent = `${count}%`
+    } else {
+      document.querySelector('h2').textContent = 'Downloaded.';
+      btn.disabled = true;
+      alert.style.display = 'initial';
+      clearInterval(interval);
+      setInterval(function() {
+        alert.style.display = 'none';
+      }, 3000);
+    }
+  }, (`${seconds}`* 1000) / 100);
+  });
+*/
+
+// LocalStorage, SessionStorage, and Cookies
+/*
+
+*/
+
+

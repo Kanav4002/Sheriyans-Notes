@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <!-- <body onload="console.log('Welcome to my homepage')"> -->
-<body>
+<body class="light">
   <!-- <a href="https://www.google.com">download now</a> -->
   <!-- <img src="" alt="broken image"> -->
   <!-- <h1 id="abcd">Hey Welcome</h1> -->
@@ -247,6 +247,24 @@
   <div class="alert" id="alertBox">
     <span>✅ File downloaded successfully!</span>
   </div> -->
+
+  <div class="container">
+    <h1>Theme Toggle</h1>
+
+    <button id="toggleTheme">Toggle Theme</button>
+    <div class="toggle-wrapper">
+      <span>🌞</span>
+      
+      <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider"></span>
+      </label>
+      
+      <span>🌙</span>
+    </div>
+
+    <p>Click the toggle to switch theme</p>
+  </div>
 
   <script src="script.js">
   </script>

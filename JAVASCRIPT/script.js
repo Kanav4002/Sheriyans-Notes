@@ -2276,7 +2276,127 @@
 
 // LocalStorage, SessionStorage, and Cookies
 /*
+  localStorage: Ye aapka browser ke andar data store karna jo ki browser band hone par bhi delete nahi hoga
 
+  sessionStorage: ye aapka data temporarily store karta hai matlab ki tab band hua aur data gaya
+
+  cookies: ye bhi data store karta hai and aapka data browser ke cookies naam ki property mein save hota hai and ye cookie concept kam data ya light data ke liye hota hai
 */
+
+/*
+  localStorage
+  1. store kaise kare
+  2. data fetch kaise karne
+  3. remove kaise kare 
+  4. update kaise kare
+
+  // localStorage.setItem("name", "kanav"); // if its not declared already it creates it
+  localStorage.setItem("name", "kannan"); // if its created already it updates it..
+  let val = localStorage.getItem("name");
+  localStorage.clear()
+
+  In localstorage we cannot store arrays also when we retrieve data from localStorage it is always string.
+
+  localStorage.setItem('friends', ['kannan', 'kunal', 'piyush']);
+  localStorage.setItem('friends', {one: "ankur", two: "muskan"});
+
+  localStorage.setItem("friends", JSON.stringify(['kannan', 'kunal', 'piyush']));
+  JSON.stringify() // turns to string
+  JSON.parse('["kannan","kunal","piyush"]'); // turns it back to its original state
+
+  localStorage.setItem("friends", JSON.stringify(['kannan', 'kunal', 'piyush']));
+
+  let arr = JSON.parse(localStorage.getItem("friends"));
+*/
+
+/*
+  sessionStorage: after opening the item in another tab it loses the session.
+  sessionStorage.setItem("name", "Kanav");
+  let val = sessionStorage.getItem("name");
+  sessionStorage.removeItem("name");
+*/
+
+/*
+  cookies: browser mein chhota data store karne ke liye cookies ka istemaal hota hai
+
+  cookies: ~ 4kb data can be stored
+  localStorage, sessionStorage: 5mb
+
+  cookies mein jo bhi data store karoge wo data page reload par automatically server par jayega
+
+  document.cookie = "email=kumarkanav5753@gmail.com"
+*/
+
+/*
+  1. Theme Toggler
+  function setDarkOrLight() {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else {
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+    }
+  }
+
+  setDarkOrLight();
+
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change', function() {
+    setDarkOrLight();
+  })
+
+  let btn = document.querySelector('button');
+  btn.addEventListener('click', function() {
+    if (document.body.classList.contains('dark')) {
+      document.body.classList.remove('dark');
+      document.body.classList.add('light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.body.classList.remove('light');
+      document.body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+
+  document.body.classList.add(localStorage.getItem('theme'));
+
+  ------------------------------------------------------------
+  
+  const body = document.body;
+  const btn = document.querySelector('button');
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  function applyTheme(theme) {
+    body.classList.toggle('dark', theme === 'dark');
+    body.classList.toggle('light', theme === 'light');
+  }
+
+  function getSystemTheme() {
+    return mediaQuery.matches ? 'dark' : 'light';
+  }
+
+  // Initial load
+  const savedTheme = localStorage.getItem('theme');
+  applyTheme(savedTheme || getSystemTheme());
+
+  // Listen for system changes (only if no manual override)
+  mediaQuery.addEventListener('change', () => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(getSystemTheme());
+    }
+  });
+
+  // Toggle button
+  btn.addEventListener('click', () => {
+    const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+*/
+
+
+
+
 
 

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Call App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- FORM (MODAL STYLE) -->
+  <div class="form-container">
+    <form class="form" id="note-form">
+      <h2>New Call</h2>
+
+      <label>Image URL</label>
+      <input required type="url" name="imageUrl" placeholder="https://example.com/photo.jpg">
+      
+      <label>Full Name</label>
+      <input required type="text" name="fullName" placeholder="Enter full name">
+
+      <label>Home Town</label>
+      <input required type="text" name="homeTown" placeholder="Enter home town">
+
+      <label>Purpose</label>
+      <input required type="text" name="purpose" placeholder="e.g., Quick appointment note">
+
+      <label>Category</label>
+      <div class="radio-group">
+        <label><input required type="radio" name="cat" value="Emergency"> Emergency</label>
+        <label><input required type="radio" name="cat" value="Important"> Important</label>
+        <label><input required type="radio" name="cat" value="Urgent"> Urgent</label>
+        <label><input required type="radio" name="cat" value="No Rush"> No Rush</label>
+      </div>
+
+      <button type="submit" class="create">Create Note</button>
+      <button type="button" class="close">Close</button>
+    </form>
+  </div>
+
+  <!-- MAIN APP -->
+  <div class="note-container">
+
+    <!-- LEFT ICONS -->
+    <div class="left-icons">
+      <button id="add-note">+</button>
+      <button id="upBtn">↑</button>
+      <button id="downBtn">↓</button>
+    </div>
+
+    <!-- CARD STACK -->
+    <div class="stack">
+      <!-- <div class="card">
+        <div class="profile">
+          <img src="https://i.pinimg.com/736x/cd/9b/1c/cd9b1cf5b96e8300751f952488d6c002.jpg">
+        </div>
+
+        <h2>Fatima Uma</h2>
+
+        <div class="info">
+          <div>
+            <p>Home town</p>
+            <span>Singapore</span>
+          </div>
+          <div>
+            <p>Bookings</p>
+            <span>3 times</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="call">📞 Call</button>
+          <button class="msg">Message</button>
+        </div>
+      </div> -->
+
+      <div class="card second"></div>
+      <div class="card third"></div>
+    </div>
+
+    <!-- RIGHT COLORS -->
+    <div class="right-colors">
+      <span class="dot black"></span>
+      <span class="dot purple"></span>
+      <span class="dot orange"></span>
+      <span class="dot green"></span>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -2395,8 +2395,137 @@
   });
 */
 
+// Callback Hell
+/*
+  Pyramid Problem.
+  Callback Hell: It is a situation in JavaScript where callbacks are nested within other callbacks to the degree where the code is difficult to read. Old pattern to handle asynchronous functions. 
+  Use Promises + async/await to avoid Callback Hell 
+
+
+  function task1 (callback) {
+    setTimeout(() => {
+      console.log("Task 1 complete");
+      callback();
+    }, 2000);
+  }
+
+  function task2 (callback) {
+    setTimeout(() => {
+      console.log("Task 2 complete");
+      callback();
+    }, 1000);
+  }
+
+  function task3 (callback) {
+    setTimeout(() => {
+      console.log("Task 3 complete");
+      callback();
+    }, 3000);
+  }
+
+  function task4 () {
+    setTimeout(() => {
+      console.log("Task 4 complete");
+    }, 1500);
+  }
+
+  task1(() => {
+    task2(() => {
+      task3(() => {
+        task4(() => {
+          console.log("All tasks complete");
+        });
+      });
+    });
+  });
+*/
+
+
+// Promises
+/*
+  Promise: An object that manages asynchronous operations.
+  Wrap a Promise Object around {asynchronous code}
+  "I promise to return a value"
+  PENDING -> RESOLVED or REJECTED
+  new Promise((resolve, reject) => {asynchronous code})
 
 
 
+  // Syntax
+  const myPromise = Promise((resolve, reject) => {
+    const success = true;
+    if (success) {
+      resolve("Operation Successful");
+    } else {
+      reject("Something went wrong");
+    }
+  })
+
+  // This can cause callback hell like a pyramid and hard to read.
+  walkDog(() => {
+    cleanKitchen(() => {
+      takeOutTrash(() => console.log("You finished all the chores"));
+    })
+  }) 
 
 
+  // Tasks
+  function walkDog() {
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+
+        const dogWalked = true;
+
+        if (dogWalked) {
+          resolve("You walk the dog");
+        } 
+        else {
+          reject("You didn't walk the dog");
+        }
+
+      }, 1500);
+    });
+  }
+
+  function cleanKitchen() {
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+
+        const kitchenCleaned = true;
+
+        if (kitchenCleaned) {
+          resolve("You clean the kitchen");
+        }
+        else {
+          reject("You didn't clean the kitchen");
+        }
+
+      }, 2500);
+    });
+  }
+
+  function takeOutTrash() {
+
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+
+        const trashTakenOut = false;
+
+        if (trashTakenOut) {
+          resolve("You take out the trash");
+        } 
+        else {
+          reject("You didn't take out the trash");
+        }
+
+      }, 500);
+    });
+  }
+
+  walkDog().then(value => { console.log(value); return cleanKitchen()})
+          .then(value => { console.log(value); return takeOutTrash()})
+          .then(value => { console.log(value); console.log("You've finished all the chores"); })
+          .catch(error => { console.error(error)});
+*/

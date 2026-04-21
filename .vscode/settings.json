@@ -1,3 +1,14 @@
 {
-  "liveServer.settings.port": 5502
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.quickSuggestionsDelay": 0,
+  "editor.suggest.showIcons": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.parameterHints.enabled": true,
+  "editor.wordBasedSuggestions": "on",
+  "editor.inlineSuggest.enabled": false
 }

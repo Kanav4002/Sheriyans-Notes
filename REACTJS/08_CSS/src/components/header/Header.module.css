@@ -1,0 +1,24 @@
+body {
+  padding: 10px 20px;
+}
+
+.header {
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.btn {
+  background-color: red;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.logo {
+  text-decoration: underline;
+}

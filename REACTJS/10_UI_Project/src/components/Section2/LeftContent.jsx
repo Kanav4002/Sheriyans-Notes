@@ -3,7 +3,7 @@ import 'remixicon/fonts/remixicon.css'
 
 const LeftContent = () => {
   return (
-    <div className='h-full w-1/2 h-[90]'>
+    <div className='h-[90] w-1/2'>
       <div className='p-6'>
         <h3 className='text-5xl font-bold mb-7'>E-com market is expected to exceed $300B in 2027</h3>
         <div className='flex gap-2 text-4xl'>

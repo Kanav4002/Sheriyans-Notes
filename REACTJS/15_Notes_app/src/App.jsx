@@ -1,12 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { X } from 'lucide-react';
+
+const getInitialNotes = () => {
+  const stored = localStorage.getItem('notes');
+  if (!stored) return [];
+  try {
+    return JSON.parse(stored);
+  } catch (e) {
+    console.error('Failed to parse notes from localStorage', e);
+    return [];
+  }
+}
 
 const App = () => {
 
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
+  const [task, setTask] = useState(getInitialNotes);
 
-  const [task, setTask] = useState([]);
+  // useEffect(() => {
+  //   const stored = localStorage.getItem('notes');
+  //   if (stored) {
+  //     try {
+  //       setTask(JSON.parse(stored));
+  //     } catch (e) {
+  //       console.error('Failed to parse notes from localStorage', e);
+  //     }
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(task));
+  }, [task]);
 
   const submitHandler = (e) => {
     e.preventDefault();

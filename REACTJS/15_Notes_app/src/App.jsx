@@ -81,7 +81,7 @@ const App = () => {
                 deleteNote(idx)
               }} className='absolute cursor-pointer active:scale-125 top-5 right-0 bg-red-500 p-1 text-xs rounded-full'><X size={16} strokeWidth={2.75} color='#fff'/></h2>
               <h3 className='leading-tight text-lg font-bold'>{elem.title}</h3>
-              <p className='mt-1 text-sm leading-tight font-medium text-gray-700'>{elem.details}</p>
+              <p className='mt-1 text-xs leading-tight font-semibold text-gray-700'>{elem.details}</p>
 
             </div>
           })}

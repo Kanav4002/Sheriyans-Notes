@@ -329,8 +329,56 @@ const userManager = {
 
     console.log(this.users); // check in console
     form.reset();
+    this.renderUI();
   },
-  removeUser: function() {},
+  
+  renderUI: function() {
+    document.querySelector('.users').innerHTML = "";
+    this.users.forEach(function(user, index) {
+       const card = document.createElement("div");
+        card.className =
+          "bg-zinc-900 p-6 rounded-2xl shadow-lg text-center w-[300px] transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-pointer";
+
+        const img = document.createElement("img");
+        img.src = user.photo;
+        img.className =
+          "w-20 h-20 rounded-full mx-auto mb-4 border-4 border-zinc-700";
+
+        const heading = document.createElement("h3");
+        heading.className = "text-lg font-semibold";
+        heading.textContent = user.username;
+
+        const role = document.createElement("p");
+        role.className = "text-sm text-gray-400 mb-2";
+        role.textContent = user.role;
+
+        const description = document.createElement("p");
+        description.className = "text-sm text-gray-400";
+        description.textContent = user.bio;
+        
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "Delete";
+        removeBtn.className =
+          "mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition";
+
+        // DELETE EVENT
+        removeBtn.addEventListener("click", () => {
+          this.removeUser(index);
+        });
+
+        card.appendChild(img);
+        card.appendChild(heading);
+        card.appendChild(role);
+        card.appendChild(description);
+        card.appendChild(removeBtn);
+
+        document.querySelector('.users').appendChild(card);
+    })
+  },
+  removeUser: function(index) {
+    this.users.splice(index, 1);
+    this.renderUI();
+  },
 };
 
 userManager.init();

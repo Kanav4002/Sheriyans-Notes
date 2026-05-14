@@ -298,87 +298,289 @@
 */
 
 /*
+  let form = document.querySelector('form');
+  let role = document.querySelector('#role');
+  let username = document.querySelector('#name');
+  let bio = document.querySelector('#bio');
+  let photo = document.querySelector('#photo');
 
+  const userManager = {
+    users: [],
+    init: function () {
+      form.addEventListener('submit', this.submitForm.bind(this));
+    },
+
+    submitForm: function(event) {
+      event.preventDefault();
+      this.addUser();
+    },
+
+    addUser: function() {
+      this.users.push({
+        username: username.value,
+        role: role.value,
+        bio: bio.value,
+        photo: photo.value
+      });
+
+      console.log(this.users); // check in console
+      form.reset();
+      this.renderUI();
+    },
+    
+    renderUI: function() {
+      document.querySelector('.users').innerHTML = "";
+      this.users.forEach(function(user, index) {
+        const card = document.createElement("div");
+          card.className =
+            "bg-zinc-900 p-6 rounded-2xl shadow-lg text-center w-[300px] transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-pointer";
+
+          const img = document.createElement("img");
+          img.src = user.photo;
+          img.className =
+            "w-20 h-20 rounded-full mx-auto mb-4 border-4 border-zinc-700";
+
+          const heading = document.createElement("h3");
+          heading.className = "text-lg font-semibold";
+          heading.textContent = user.username;
+
+          const role = document.createElement("p");
+          role.className = "text-sm text-gray-400 mb-2";
+          role.textContent = user.role;
+
+          const description = document.createElement("p");
+          description.className = "text-sm text-gray-400";
+          description.textContent = user.bio;
+          
+          const removeBtn = document.createElement("button");
+          removeBtn.textContent = "Delete";
+          removeBtn.className =
+            "mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition";
+
+          // DELETE EVENT
+          removeBtn.addEventListener("click", () => {
+            this.removeUser(index);
+          });
+
+          card.appendChild(img);
+          card.appendChild(heading);
+          card.appendChild(role);
+          card.appendChild(description);
+          card.appendChild(removeBtn);
+
+          document.querySelector('.users').appendChild(card);
+      })
+    },
+    removeUser: function(index) {
+      this.users.splice(index, 1);
+      this.renderUI();
+    },
+  };
+
+  userManager.init();
 */
 
+// Object Oriented Programming
+/*
+  function createBiscuits(name, price, qty, company, category) {
+    this.name = name;
+    this.price = price;
+    this.qty = qty;
+    this.company = company;
+    this.category = category;
+  }
 
-let form = document.querySelector('form');
-let role = document.querySelector('#role');
-let username = document.querySelector('#name');
-let bio = document.querySelector('#bio');
-let photo = document.querySelector('#photo');
+  const biscuits1 = new createBiscuits('Oreo', 10, 5, 'Mondelēz', 'Chocolate');
+  const biscuits2 = new createBiscuits('Parle-G', 10, 10, 'Parle', 'Vanilla');
 
-const userManager = {
-  users: [],
-  init: function () {
-    form.addEventListener('submit', this.submitForm.bind(this));
-  },
 
-  submitForm: function(event) {
-    event.preventDefault();
-    this.addUser();
-  },
+  OOPs mein hum factories ya blueprints banana seekhte hain.
+  Matlab ek baar decide kar do ki har object ka structure kaisa hoga, phir ussi blueprint se hum bahut saare naye objects bana sakte hain — bas unki values alag hongi.
 
-  addUser: function() {
-    this.users.push({
-      username: username.value,
-      role: role.value,
-      bio: bio.value,
-      photo: photo.value
-    });
+  Easy example 👇
 
-    console.log(this.users); // check in console
-    form.reset();
-    this.renderUI();
-  },
-  
-  renderUI: function() {
-    document.querySelector('.users').innerHTML = "";
-    this.users.forEach(function(user, index) {
-       const card = document.createElement("div");
-        card.className =
-          "bg-zinc-900 p-6 rounded-2xl shadow-lg text-center w-[300px] transform transition-all duration-300 ease-in-out hover:scale-105 hover:-translate-y-2 hover:shadow-2xl cursor-pointer";
+  Socho ek Car ka blueprint hai:
 
-        const img = document.createElement("img");
-        img.src = user.photo;
-        img.className =
-          "w-20 h-20 rounded-full mx-auto mb-4 border-4 border-zinc-700";
+  * Har car mein color
+  * brand
+  * speed
 
-        const heading = document.createElement("h3");
-        heading.className = "text-lg font-semibold";
-        heading.textContent = user.username;
+  yeh sab cheezein hongi.
 
-        const role = document.createElement("p");
-        role.className = "text-sm text-gray-400 mb-2";
-        role.textContent = user.role;
+  Ab isi blueprint se hum alag alag cars bana sakte hain:
 
-        const description = document.createElement("p");
-        description.className = "text-sm text-gray-400";
-        description.textContent = user.bio;
-        
-        const removeBtn = document.createElement("button");
-        removeBtn.textContent = "Delete";
-        removeBtn.className =
-          "mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition";
+  * Red BMW
+  * Black Audi
+  * White Tesla
 
-        // DELETE EVENT
-        removeBtn.addEventListener("click", () => {
-          this.removeUser(index);
-        });
+  Structure same rahega, sirf values change hongi.
 
-        card.appendChild(img);
-        card.appendChild(heading);
-        card.appendChild(role);
-        card.appendChild(description);
-        card.appendChild(removeBtn);
+  Programming mein isi blueprint ko mostly Class bolte hain,
+  aur usse bane real objects ko Objects bolte hain.
 
-        document.querySelector('.users').appendChild(card);
-    })
-  },
-  removeUser: function(index) {
-    this.users.splice(index, 1);
-    this.renderUI();
-  },
-};
+  Simple line mein:
 
-userManager.init();
+  OOPs ka main kaam hai ek reusable blueprint banana taaki hum easily naye naye similar objects create kar sakein.
+
+  function Cars(color, brand, speed) {
+    this.color = color;
+    this.brand = brand;
+    this.speed = speed;
+  }
+
+  const car1 = new Cars("Red", "BMW", 220);
+  const car2 = new Cars("Black", "Audi", 240);
+  const car3 = new Cars("White", "Tesla", 260);
+
+  ******************************************************************************************************
+
+  function Cars(color, brand, speed, company) {
+    this.color = color;
+    this.brand = brand;
+    this.speed = speed;
+    this.company = company;
+  }
+
+  Cars.prototype.write = function(text) {
+      let h1 = document.createElement('h1');
+      h1.textContent = text;
+      h1.style.color = this.color;
+      console.log(h1);
+      document.body.append(h1);
+    }
+
+  const car1 = new Cars("red", "BMW", 220, 'BMW Group');
+  const car2 = new Cars("black", "Audi", 240, 'Volkswagen Group');
+  const car3 = new Cars("white", "Tesla", 260, 'Elon Musk');
+  const car4 = new Cars("gold", "Bugatti Chiron", 300, 'Rimac Group');
+*/
+
+/*
+  Classes
+
+  class CreatePhones {
+    constructor(brand, model, color, price) {
+      this.brand = brand;
+      this.model = model;
+      this.price = price;
+      this.color = color;
+    }
+
+    erase() {
+      document.body.querySelectorAll('h1').forEach((elem) => {
+        if (elem.style.color === this.color) {
+          elem.remove();
+        }
+      })
+    }
+
+    write(text) {
+      let h1 = document.createElement('h1');
+      h1.textContent = text;
+      h1.style.color = this.color;
+      document.body.appendChild(h1);
+    }
+  }
+
+  const phone1 = new CreatePhones('Apple', 'iPhone 15', 'black', '79,900');
+  const phone2 = new CreatePhones('Samsung', 'S24 Ultra', 'gray', '1,29,999');
+  const phone3 = new CreatePhones('OnePlus', '12R', 'blue', '39,999');
+  const phone4 = new CreatePhones('Google', 'Pixel 8 Pro', 'white', '1,06,999');
+  const phone5 = new CreatePhones('Nothing', 'Phone 2', 'yellow', '44,999');
+*/
+
+/*
+  class User {
+    constructor(name, address, username, email) {
+      this.name = name;
+      this.address = address;
+      this.username = username;
+      this.email = email;
+      this.role = 'user';
+    }
+
+    checkRole () {
+      // console.log(`You are a ${this.role}`);
+      return `You are a ${this.role}`;
+    }
+
+    write(text) {
+      let h1 = document.createElement("h1");
+      h1.textContent = `${this.name}: ${text}`;
+      document.body.appendChild(h1);
+    }
+  }
+
+  class Admin extends User {
+    constructor(name, address, username, email) {
+      super(name, address, username, email);
+      this.role = "admin";
+    }
+
+    remove() {
+      document.querySelectorAll("h1")
+        .forEach(elem => elem.remove());
+    }
+  }
+
+  let u1 = new User(
+    'Kanav',
+    'Zirakpur',
+    'kanav2111',
+    'kumarkanav5753@gmail.com'
+  );
+
+  let u2 = new User(
+    'Kannan',
+    'Zirakpur',
+    'kannan2112',
+    'kannan2112.be23@chitkara.edu.in;'
+  );
+
+  let a1 = new Admin(
+    'admin1',
+    'India',
+    'admin',
+    'admin@gmail.com'
+  );
+*/
+
+/*
+  Classical Inheritance - Java/CPP
+  classical banana and unhe extend krdena
+
+  Inheritance: class se inherit krna, class -> class
+
+  Prototypal Inheritance - Java
+  ek object hai aap chaaho to uski saari props/methods ko inherit kara dete ho doosre object mein
+
+  let coffee = {
+    color: 'dark',
+    drink: function() {
+      console.log('sip sip sip...');
+    }
+  }
+
+  let arabiataCoffee = Object.create(coffee);
+  // console.log(arabiataCoffee);
+  arabiataCoffee.taste = 'bitter';
+  arabiataCoffee.drink();
+*/
+
+// Callback, Promises & Async & Await
+/*
+  By default, JavaScript executes code line by line, and this is the natural behavior of JavaScript.
+
+  However, in real-world situations, there are cases where some code takes time to complete (like fetching data from an API, reading a file, or waiting for a timer). Instead of making the entire program stop and wait, JavaScript allows other code to continue running while that task completes in the background.
+
+  So, while one piece of code is waiting, the next lines of code can execute, and once the waiting task finishes, JavaScript handles it later.
+*/
+
+console.log('hey1');
+console.log('hey2');
+
+setTimeout(() => {
+  console.log('hey3');
+}, 2000); // 
+
+console.log('hey4');

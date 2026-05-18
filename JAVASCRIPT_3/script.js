@@ -688,3 +688,110 @@
   // With async keyword we can use await keyword which things wait till pr is calculates. 
 */
 
+// Fetch API + HTTP Basics
+/*
+
+  fetch('https://randomuser.me/api/')
+    // fetch brings data which is not readable so with .json its becomes readable.
+    .then((rawData) => {
+      return rawData.json();
+      console.log(rawData);
+    })
+    .then((data) => {
+      console.log(data.results[0].name.first);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+  // implicit return
+  fetch('https://randomuser.me/api/?results=5')
+    .then((raw) => raw.json())
+    .then((data) => console.log(data.results))
+    .catch((err) => console.log(err));
+
+*/
+
+
+function getUsers() {
+  // before adding more cards make sure to remove previous ones.
+  document.querySelector('.users').innerHTML = "";
+  fetch('https://randomuser.me/api/?results=3')
+  .then((raw) => raw.json())
+  .then((data) => {
+    data.results.forEach((user) => {
+      console.log(user);
+
+      // Main Card
+      const card = document.createElement("div");
+      card.className =
+        "bg-gray-800 rounded-2xl shadow-lg p-6 w-80 text-center border border-gray-700";
+
+      // Image
+      const img = document.createElement("img");
+      img.className =
+        "w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-indigo-500";
+      img.src = user.picture.large;
+      img.alt = "User Avatar";
+
+      // Name
+      const heading = document.createElement("h2");
+      heading.className = "text-2xl font-semibold text-white";
+      heading.textContent = user.name.first + " " + user.name.last;
+
+      // Role
+      const cellNum = document.createElement("p");
+      cellNum.className = "text-indigo-400 text-sm";
+      cellNum.textContent = "Contact: " + user.cell;
+
+      // Email
+      const email = document.createElement("p");
+      email.className = "text-gray-300 text-sm";
+      email.textContent = user.email;
+
+      // Description
+      // const desc = document.createElement("p");
+      // desc.className = "text-gray-400 text-sm mt-3";
+      // desc.textContent =
+      //   "Passionate about building beautiful web experiences with modern tech.";
+
+      // Button Container
+      const buttonContainer = document.createElement("div");
+      buttonContainer.className = "flex justify-center gap-4 mt-5";
+
+      // Follow Button
+      const followBtn = document.createElement("span");
+      followBtn.className =
+        "bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer hover:bg-indigo-500 transition";
+      followBtn.textContent = "Follow";
+
+      // Message Button
+      const msgBtn = document.createElement("span");
+      msgBtn.className =
+        "bg-gray-700 text-gray-300 px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer hover:bg-gray-600 transition";
+      msgBtn.textContent = "Message";
+
+      // Append buttons into button container
+      buttonContainer.append(followBtn, msgBtn);
+
+      // Append all into card
+      card.append(
+        img,
+        heading,
+        cellNum,
+        email,
+        // desc,
+        buttonContainer
+      );
+
+      document.querySelector('.users').appendChild(card);
+
+      // Append card to body
+      // document.body.append(card);
+    })
+  });
+}
+
+document.querySelector('#refreshBtn').addEventListener('click', function() {
+  getUsers();
+});

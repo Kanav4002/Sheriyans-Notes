@@ -664,4 +664,27 @@
 
 /*
   Async & Await
+
+  let pr = new Promise(function (res, rej) {
+    setTimeout(() => {
+      let rn = Math.floor(Math.random() * 10);
+      if (rn > 5) res('Resolved with ' + rn);
+      else rej('Rejected with ' + rn);
+      res('Kanav');
+    }, 1000);
+  })
+
+  async function abcd() {
+    try {  
+      let val = await pr;
+      console.log(val);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  abcd();
+
+  // With async keyword we can use await keyword which things wait till pr is calculates. 
 */
+

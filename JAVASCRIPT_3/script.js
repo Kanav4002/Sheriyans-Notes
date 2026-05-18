@@ -574,13 +574,94 @@
   However, in real-world situations, there are cases where some code takes time to complete (like fetching data from an API, reading a file, or waiting for a timer). Instead of making the entire program stop and wait, JavaScript allows other code to continue running while that task completes in the background.
 
   So, while one piece of code is waiting, the next lines of code can execute, and once the waiting task finishes, JavaScript handles it later.
+
+
+  console.log('hey1');
+  console.log('hey2');
+
+  setTimeout(() => {
+    console.log('hey3');
+  }, 2000); // 
+
+  console.log('hey4');
 */
 
-console.log('hey1');
-console.log('hey2');
+/*
+  Synchronous and Asynchronous
 
-setTimeout(() => {
-  console.log('hey3');
-}, 2000); // 
+  Sync: aisa code jo line by line chale hota hai sync code
+  Async: aisa code jo jab chalne ke liye ready ho jaaye tab chale wo hai async
 
-console.log('hey4');
+  function afterSomeTime (func) {
+    setTimeout (func, Math.floor(Math.random() * 10) * 200
+    );
+  }
+
+  // afterSomeTime(12);
+  afterSomeTime(function () {
+    console.log('hey');
+  });
+*/
+
+/*
+  Callback and Callback Hell
+
+  function profileFetch(username, cb) {
+    console.log('Fetching profile...');
+    setTimeout(() => {
+      cb({ _id: 2111, username, age: 21, email: "kumarkanav5753@gmail.com" });
+    }, 2000);
+  }
+
+  function allPosts(id, cb) {
+    console.log('Fetching all posts...');
+    setTimeout(() => {
+      cb({ _id: id, posts: ['hey', 'hello', 'good morning']});
+    }, 3000);
+  }
+
+  function savePostsFetch(id, cb) {
+    console.log('Fetching saved posts...');
+    setTimeout(() => {
+      cb({_id: id, saved: [1, 2, 3, 5, 8, 13, 21]});
+    }, 3000);
+  }
+
+  // This is callback hell
+  profileFetch("kanav", function(data) {
+    console.log(data);
+    allPosts(data._id, function(posts) {
+      console.log(posts);
+      savePostsFetch(data._id, function(saved) {
+        console.log(saved);
+      })
+    });
+  });
+*/
+
+/*
+  Promises
+  
+  aap ek promise bnate ho jo ki do states mein se ek state mein jaa sakta hai and wo yaa to resolve hoga ya to reject hoga abh wo kya hoga ye to waqt bataayega par humein dono ke liye code likhna padta hai
+
+  let pr = new Promise(function (res, rej) {
+    setTimeout(() => {
+      let rn = Math.floor(Math.random() * 10);
+      if (rn > 5) res('Resolved with ' + rn);
+      else rej('Rejected with ' + rn);
+      res('Kanav');
+    }, 3000);
+  })
+
+  pr
+  .then(function(val) {
+    console.log(val);
+  })
+  .catch(function(val) {
+    console.log(val);
+  })
+*/
+
+/*
+  Async & Await
+*/
